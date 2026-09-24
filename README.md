@@ -1,4 +1,4 @@
-# 📊 Análise de Vendas E-commerce — Descritiva, Diagnóstica, Preditiva e Prescritiva
+# 📊 Análise de Vendas E-commerce ( Descritiva, Diagnóstica, Preditiva e Prescritiva )
 
 **Por que os pedidos caíram em 2018, e onde vale a pena agir para reverter isso.**
 
@@ -6,17 +6,17 @@
 
 ## 1. Problema
 
-Uma base de **4.000 pedidos de e-commerce (jan/2017 – ago/2018)** mostrava crescimento forte em 2017, mas **desacelerou ao longo de 2018** sem retomar o ritmo anterior.
+Uma base de **4.000 pedidos de e-commerce (jan/2017 - ago/2018)** mostrava crescimento forte em 2017, mas **desacelerou ao longo de 2018** sem retomar o ritmo anterior.
 
 **Pergunta de negócio:** por que os pedidos caíram, e em qual alavanca (clientes, vendedores, catálogo, preço) vale mais a pena investir para reverter a tendência?
 
-Este projeto responde essa pergunta percorrendo as 4 etapas clássicas da análise de dados — cada uma respondendo uma pergunta diferente sobre o mesmo problema, com a mesma base do início ao fim.
+Este projeto responde essa pergunta percorrendo as 4 etapas clássicas da análise de dados, cada uma respondendo uma pergunta diferente sobre o mesmo problema, com a mesma base do início ao fim.
 
 ---
 
 ## 2. Arquitetura
 
-> Este é um projeto de análise de dados, não uma aplicação com backend/frontend — então "arquitetura" aqui é o **pipeline analítico**: como o dado bruto vira, em 4 estágios, uma recomendação de negócio acionável.
+> Este é um projeto de análise de dados, então "arquitetura" aqui é o **pipeline analítico**: como o dado bruto vira, em 4 estágios, uma recomendação de negócio acionável.
 
 ```mermaid
 flowchart TB
@@ -66,7 +66,7 @@ flowchart TB
     style E fill:#fee2e2
 ```
 
-Cada estágio consome a saída do anterior — a descritiva mapeia o sintoma, a diagnóstica investiga a causa, a preditiva projeta o efeito futuro, e a prescritiva testa qual alavanca realmente resolve o problema.
+Cada estágio consome a saída do anterior : a descritiva mapeia o sintoma, a diagnóstica investiga a causa, a preditiva projeta o efeito futuro, e a prescritiva testa qual alavanca realmente resolve o problema.
 
 ---
 
@@ -81,7 +81,7 @@ Cada estágio consome a saída do anterior — a descritiva mapeia o sintoma, a 
 | Modelagem preditiva | Regressão linear simples (Data Analysis Toolpak) |
 | Modelagem prescritiva | Regressão linear múltipla com variáveis padronizadas (z-score) |
 
-**Limitação assumida:** amostra de 4.000 pedidos (não a base completa) e sem Python/SQL — escolha proposital para focar no raciocínio analítico com a ferramenta mais acessível. Próximo passo natural: migrar para Python/SQL com a base completa (ver seção 5).
+**Limitação assumida:** amostra de 4.000 pedidos (não a base completa) e sem Python/SQL : escolha proposital para focar no raciocínio analítico com a ferramenta mais acessível. Próximo passo natural: migrar para Python/SQL com a base completa (ver seção 5).
 
 ---
 
@@ -131,17 +131,17 @@ pedidos ≈ 1.02 × clientes + 0.02 × vendedores − 0.03 × produtos − 0.01 
 ## 5. Resultados, Aprendizados e Próximos Passos
 
 **Resultado / recomendação de negócio:**
-As 4 etapas convergem: **aquisição e retenção de clientes** é a alavanca com maior poder de explicação sobre pedidos — muito acima de expandir catálogo ou base de vendedores, que têm impacto estatístico marginal quando isolados do efeito de clientes.
+As 4 etapas convergem: **aquisição e retenção de clientes** é a alavanca com maior poder de explicação sobre pedidos, sendo muito acima de expandir catálogo ou base de vendedores, que têm impacto estatístico pequeno quando isolados do efeito de clientes.
 
 **Aprendizado técnico principal:**
-Rodar a regressão prescritiva com e sem "clientes" expôs uma **variável confusora** — "produtos" parecia relevante isoladamente, mas era um efeito colateral do crescimento da base de clientes. Sem esse teste, a conclusão teria sido a oposta da correta.
+Rodar a regressão prescritiva com e sem "clientes" expôs uma **variável confusora**: "produtos" parecia relevante isoladamente, mas era um efeito colateral do crescimento da base de clientes. Sem esse teste, a conclusão teria sido incorreta.
 
 **Próximos passos:**
 - Migrar o pipeline para **Python/SQL** e rodar sobre a base completa (não a amostra de 4.000 pedidos)
 - Automatizar a atualização mensal dos indicadores (hoje o processo é manual, aba a aba)
 - Testar a recomendação com um experimento controlado (ex: campanha de aquisição em uma região vs. grupo controle)
 
-> **Nota sobre a conclusão:** este projeto foi feito originalmente em uma disciplina, há alguns meses — a leitura acima é a minha interpretação direta dos números da planilha.
+> **Nota sobre a conclusão:** este projeto foi feito originalmente há alguns meses. A leitura acima é a minha interpretação direta dos números da planilha.
 
 ---
 
